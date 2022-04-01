@@ -1,0 +1,12 @@
+.devcontainer/
+.vscode/
+.git/
+
+node_modules/
+
+.env
+.eslintrc.js
+.gitignore
+CHANGELOG.md
+README.md
+jest.config.js

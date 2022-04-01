@@ -1,0 +1,54 @@
+{
+  "name": "typescript-node-template",
+  "description": "Nodejs template loaded with Typescript and other dev-tools",
+  "version": "0.0.0",
+  "author": "Ben Chiang <chiangbenjamin991@gmail.com>",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "src": "src/",
+    "dist": "build/"
+  },
+  "dependencies": {
+    "config": "^3.3.7"
+  },
+  "devDependencies": {
+    "@forvais/eslint-config-base": "^1.0.0",
+    "@forvais/eslint-config-node": "^1.0.0",
+    "@tsconfig/node16": "^1.0.2",
+    "@types/config": "0.0.41",
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.12",
+    "@typescript-eslint/eslint-plugin": "^5.10.1",
+    "@typescript-eslint/parser": "^5.10.1",
+    "commitizen": "^4.2.4",
+    "conventional-changelog-cli": "^2.2.2",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "dotenv": "^14.3.0",
+    "eslint": "^8.7.0",
+    "eslint-plugin-node": "^11.1.0",
+    "jest": "^27.4.7",
+    "rimraf": "^3.0.2",
+    "source-map-support": "^0.5.21",
+    "ts-jest": "^27.1.3",
+    "ts-node-dev": "^1.1.8",
+    "tsc-alias": "^1.5.0",
+    "tsconfig-paths": "^3.12.0",
+    "typescript": "^4.5.5"
+  },
+  "license": "MIT",
+  "scripts": {
+    "commit": "git-cz",
+    "lint": "eslint --ext ts $npm_package_config_src/",
+    "lint:all": "eslint .",
+    "!build:tsc": "rimraf $npm_package_config_dist && tsc -p tsconfig.release.json && tsc-alias -p tsconfig.release.json",
+    "!build:docker": "docker build -t $npm_package_name:$npm_package_version .",
+    "build": "npm run !build:tsc",
+    "start": "cross-env NODE_ENV=production node -r dotenv/config -r source-map-support/register ./$npm_package_config_dist",
+    "start:dev": "cross-env NODE_ENV=development ts-node-dev -r tsconfig-paths/register -r dotenv/config ./$npm_package_config_src",
+    "!start:docker": "node -r source-map-support/register ./$npm_package_config_dist",
+    "changelog": "conventional-changelog -p angular -o CHANGELOG.md -s -r 0"
+  }
+}

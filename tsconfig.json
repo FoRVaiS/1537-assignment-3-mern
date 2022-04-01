@@ -1,0 +1,24 @@
+{
+  "extends": "@tsconfig/node16/tsconfig.json",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "typeRoots": ["typings", "node_modules/@types"],
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "newLine": "crlf",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "rootDir": "src/",
+    "outDir": "build/",
+    "sourceMap": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules/"]
+}
